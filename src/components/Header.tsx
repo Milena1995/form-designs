@@ -1,28 +1,27 @@
 import React from "react";
-import { Horizontal } from "../style/style";
+import "../../src/stylesheet/navigation.scss";
+import { View } from "app-studio";
+
 export const Header = () => {
   return (
-    <Horizontal>
-      <ul className="list-dsk">
-        <li className="item column">
-          <span className="material-symbols-outlined"> restaurant </span>
+    <View width={"100%"} padding={"25px 5px"} backgroundColor={"black"}>
+      <ul className="header-list">
+        <li className="header-item">
           <a href="menu.html" className="icon-text">
             Menu
           </a>
         </li>
-        <li className="item column">
-          <span className="material-symbols-outlined"> error </span>
+        <li className="header-item">
           <a href="about.html" className="icon-text">
             About
           </a>
         </li>
-        <li className="item column">
-          <span className="material-symbols-outlined"> stars </span>
+        <li className="header-item">
           <a href="rewards.html" className="icon-text">
             Rewards
           </a>
         </li>
       </ul>
-    </Horizontal>
+    </View>
   );
 };
