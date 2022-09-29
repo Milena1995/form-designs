@@ -1,6 +1,119 @@
+$grey: #666666;
+$black_grey: #333333;
+$grey_light: rgba(102, 102, 102, 0.8);
+
+* {
+  font-family: "Poppins";
+}
 .form1-content {
-  height: 300px;
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  padding: 24px;
+}
+
+.right-section {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 37%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+#title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  color: $black_grey;
+}
+#log-in-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: $black_grey;
+  margin-bottom: 34px;
+
+  & a {
+    text-decoration: underline;
+    color: $black_grey;
+  }
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: $grey;
+}
+
+input {
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  border-radius: 12px;
+  height: 56px;
+  padding-left: 5px;
+  margin-bottom: 32px;
+  color: $grey;
+}
+
+#hide {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: $grey_light;
+  padding-left: 8px;
+}
+
+#unordered-list {
+  display: flex;
+  flex: 1 0 33%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 40px;
+
+  & li {
+    list-style: circle;
+  }
+  margin-bottom: 32px;
+}
+
+.checkbox {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: $black_grey;
+  padding-bottom: 32px;
+}
+
+button {
+  background: #111111;
+  opacity: 0.25;
+  border-radius: 32px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 33px;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px 20px;
+  width: fit-content;
+  align-self: center;
+}
+
+#agreement > a {
+  text-decoration: underline;
+  color: $black_grey;
+}
+
+#checkbox-input {
+  width: 20px;
+  margin-right: 10px;
 }
