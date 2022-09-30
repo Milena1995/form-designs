@@ -37,7 +37,7 @@ export const Form1 = () => {
   };
 
   return (
-    <Horizontal width={"100%"} height={"100vh"}>
+    <Horizontal width={"100%"} height={"100vh"} overflowY={"hidden"}>
       <Center height={"100%"} flex={2}>
         <Vertical className={"form1-content"}>
           <View id={"title"}>Welcome to Design Community </View>
@@ -87,6 +87,7 @@ export const Form1 = () => {
               isSubmitting,
             }) => (
               <form className={"form1-container"} onSubmit={handleSubmit}>
+                {/* **********************************Email Section*************************** */}
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
@@ -96,6 +97,7 @@ export const Form1 = () => {
                   value={values.email}
                 />
                 {errors.email}
+                {/* **********************************UserName Section*************************** */}
                 <label htmlFor="username">Username</label>
                 <input
                   type="username"
@@ -105,6 +107,7 @@ export const Form1 = () => {
                   value={values.username}
                 />
                 {errors.username}
+                {/* **********************************Password Section*************************** */}
                 <Horizontal justifyContent={"space-between"}>
                   <label htmlFor="password">Password</label>
                   <Horizontal justifyContent={"center"} alignItems={"center"}>
@@ -120,7 +123,6 @@ export const Form1 = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                {errors.password}
                 <View>
                   <ul id={"unordered-list"}>
                     <li id={"more-characters"}>Use 8 or more characters</li>
@@ -130,11 +132,11 @@ export const Form1 = () => {
                     <li id={"one-character"}>One number</li>
                   </ul>
                 </View>
-                {/* <View
-                  {...row}
-                  //   backgroundColor={"red"}
+                {/* **********************************checkbox Section*************************** */}
+                <Horizontal
+                  id={"checkbox-container"}
                   alignItems={"center"}
-                  //   height="40px"
+                  margin={"32px 0"}
                 >
                   <input
                     type="checkbox"
@@ -142,16 +144,18 @@ export const Form1 = () => {
                     name="checkbox"
                     value="checkbox"
                   />
-                  <label id={"checkbox"} htmlFor="checkbox">
+                  <View id={"checkbox1"} htmlFor="checkbox">
                     I want to receive emails about the product, feature updates,
                     events, and marketing promotions.
-                  </label>
-                </View> */}
+                  </View>
+                </Horizontal>
+                {/* **********************************agreement Section*************************** */}
                 <View id={"agreement"} paddingBottom={32}>
                   By creating an account, you agree to the{" "}
                   <a href=" ">Terms of use</a> and{" "}
                   <a href=" ">Privacy Policy</a>.
                 </View>
+                {/* **********************************Submit Section*************************** */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -159,6 +163,9 @@ export const Form1 = () => {
                 >
                   Create an account
                 </button>
+                <View id={"log-in-text"} alignSelf={"center"} marginTop={8}>
+                  Already have an account? <a href=" ">Log in</a>
+                </View>
               </form>
             )}
           </Formik>
