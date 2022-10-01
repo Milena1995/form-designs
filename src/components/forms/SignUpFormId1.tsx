@@ -5,7 +5,14 @@ import "../../stylesheet/form1.scss";
 import { Center, Horizontal, Vertical } from "../../layout/layout";
 import { ReactComponent as HideIcon } from "../../assets/svg/hide.svg";
 
-export const Form1 = () => {
+export const SignUpFormId1 = () => {
+  const initialValues = {
+    email: "",
+    password: "",
+    username: "",
+    checkbox: false,
+  };
+
   const [hide, setHide] = useState(true);
   /**
    * inputs is an array containing HTMLElements.
@@ -23,21 +30,62 @@ export const Form1 = () => {
     }
   }, [hide]);
 
-  const initialValues = {
-    email: "",
-    password: "",
-    username: "",
+  const handlePassword = (value: any) => {
+    let error: any = "";
+    const errorTypes = [
+      { id: "more-characters", regex: value.length < 8 },
+      { id: "uppercase", regex: !/[A-Z]/.test(value) },
+      { id: "lowercase", regex: !/[a-z]/.test(value) },
+      {
+        id: "special-characters",
+        regex: !/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/.test(value),
+      },
+      { id: "one-character", regex: !/\d/.test(value) },
+    ];
+    for (var i = 0; i < errorTypes.length; i++) {
+      const name = document.getElementById(errorTypes[i].id);
+      if (name) {
+        if (errorTypes[i].regex) {
+          name.style.color = "red";
+          error = true;
+        } else {
+          name.style.color = "#333333";
+        }
+      }
+    }
+    return error;
   };
-
-  const handleOnSubmit = (setSubmitting: any, values: any) => {
+  const handleOnSubmit = (values: any, setSubmitting: any) => {
     setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
       setSubmitting(false);
+      alert(JSON.stringify(values, null, 2));
     }, 400);
   };
 
+  const handleValidation = (values: any) => {
+    const errors = { email: "", password: "", username: "" };
+
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = "Invalid email address";
+    }
+
+    errors.password = handlePassword(values.password);
+
+    if (!values.username) {
+      errors.username = "Username is required";
+    }
+    // /*
+    //  * params: errors
+    //  * function: remove duplicate then check if errors contains at least one error message.
+    //  * returns: Object errors
+    //  */
+    if (new Set(Object.values(errors)).size !== 1) return errors;
+  };
+
   return (
-    <Horizontal width={"100%"} height={"100vh"} overflowY={"hidden"}>
+    <Horizontal width={"100%"} height={"100vh"} overflowY={"auto"}>
       <Center height={"100%"} flex={2}>
         <Vertical className={"form1-content"}>
           <View id={"title"}>Welcome to Design Community </View>
@@ -46,38 +94,12 @@ export const Form1 = () => {
           </View>
           <Formik
             initialValues={initialValues}
-            validate={(values) => {
-              const errors = { email: "", password: "", username: "" };
-              // Handle email errors
-              if (!values.email) {
-                errors.email = "Required";
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Invalid email address";
-              }
-              // Handle password errors
-              if (!values.password) {
-                errors.password = "Required";
-              }
-              if (values.password.length < 8) {
-                var characters = document.getElementById("more-characters");
-                if (characters) characters.style.color = "red";
-              }
-              // Handle username errors
-              if (!values.username) {
-                errors.username = "Username is required";
-              }
-              /*Verify if errors contains at least one error message, if so return errors.
-               *new Set removes duplicates, thus if length is greater than one. Errors still exist.
-               *["", "", ""] no erros. With new Set [""]
-               */
-              if (new Set(Object.values(errors)).size !== 1) return errors;
-            }}
-            onSubmit={(values, { setSubmitting }) =>
-              handleOnSubmit(setSubmitting, values)
-            }
+            validate={handleValidation}
+            validateOnChange={false}
+            validateOnBlur={false}
+            onSubmit={handleOnSubmit}
           >
+            {/* handleBlur: used to identify if an input has been touched */}
             {({
               values,
               errors,
@@ -88,7 +110,10 @@ export const Form1 = () => {
             }) => (
               <form className={"form1-container"} onSubmit={handleSubmit}>
                 {/* **********************************Email Section*************************** */}
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">
+                  Email
+                  {errors.email && <span id={"email_error"}>* required</span>}
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -96,9 +121,13 @@ export const Form1 = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                {errors.email}
                 {/* **********************************UserName Section*************************** */}
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">
+                  Username
+                  {errors.username && (
+                    <span id={"username_error"}>* required</span>
+                  )}
+                </label>
                 <input
                   type="username"
                   name="username"
@@ -106,7 +135,6 @@ export const Form1 = () => {
                   onBlur={handleBlur}
                   value={values.username}
                 />
-                {errors.username}
                 {/* **********************************Password Section*************************** */}
                 <Horizontal justifyContent={"space-between"}>
                   <label htmlFor="password">Password</label>
@@ -115,7 +143,6 @@ export const Form1 = () => {
                     <View id={"hide"}>{hide ? "Show" : "Hide"}</View>
                   </Horizontal>
                 </Horizontal>
-
                 <input
                   type="password"
                   name="password"
@@ -142,6 +169,8 @@ export const Form1 = () => {
                     type="checkbox"
                     id="checkbox-input"
                     name="checkbox"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     value="checkbox"
                   />
                   <View id={"checkbox1"} htmlFor="checkbox">
@@ -159,6 +188,11 @@ export const Form1 = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
+                  style={{
+                    backgroundColor: isSubmitting
+                      ? "rgba(102, 102, 102, 0.8)"
+                      : "#333333",
+                  }}
                   onClick={() => console.log("clicked")}
                 >
                   Create an account

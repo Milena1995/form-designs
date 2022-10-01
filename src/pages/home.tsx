@@ -1,11 +1,11 @@
 // import { View } from "app-studio";
 import React from "react";
-import { Form1 } from "../components/forms/form1";
 import { Horizontal, Vertical } from "../layout/layout";
 import { ReactComponent as BackArrow } from "../../src/assets/svg/backArrow.svg";
 import { ReactComponent as NextArrow } from "../../src/assets/svg/forwardArrow.svg";
 import "../stylesheet/home.scss";
 import { View } from "app-studio";
+import { SignUpFormId1 } from "../components/forms/SignUpFormId1";
 
 const HomePage = () => {
   return (
@@ -22,7 +22,7 @@ const HomePage = () => {
         <View fontSize={18}>1/20</View>
         <NextArrow width={24} height={24} />
       </Horizontal>
-      <Form1 />
+      <SignUpFormId1 />
     </Vertical>
   );
 };
