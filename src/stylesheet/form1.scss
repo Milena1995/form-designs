@@ -4,42 +4,12 @@ $grey_light: rgba(102, 102, 102, 0.8);
 
 * {
   font-family: "Poppins";
-  color: $black_grey;
-}
-
-.form1-content {
-  padding: 2rem 2rem 0;
-}
-
-.right-section {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 37%,
-    rgba(0, 212, 255, 1) 100%
-  );
-}
-
-#title {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 2rem;
-  line-height: 3rem;
-  color: $black_grey;
-}
-#log-in-text {
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  font-size: 1rem;
   line-height: 1.5rem;
+  text-align: justify;
   color: $black_grey;
-  margin-bottom: 2.125rem;
-
-  & a {
-    text-decoration: underline;
-    color: $black_grey;
-  }
 }
 form {
   display: flex;
@@ -47,10 +17,6 @@ form {
 }
 
 label {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5rem;
   color: $grey;
 }
 
@@ -67,40 +33,9 @@ input[type="checkbox"] {
   margin-bottom: 0;
 }
 
-#hide {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  color: $grey_light;
-  padding-left: 8px;
-}
-
-#unordered-list {
-  display: flex;
-  flex: 1 0 33%;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 30px;
-
-  & li {
-    list-style: circle;
-    color: $black_grey;
-  }
-}
-
-#checkbox1 {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: $black_grey;
-}
-
 button {
   background-color: $black_grey;
   border-radius: 2rem;
-  font-style: normal;
   font-weight: 500;
   font-size: 22px;
   line-height: 33px;
@@ -110,37 +45,88 @@ button {
   width: fit-content;
   align-self: center;
   border: 0px;
+  margin: 2.5rem 0 0.5rem;
+}
+
+#signUpFromId1 {
+  width: 70%;
+  height: 100%;
+}
+
+.form-container {
+  padding: 2rem 2rem 0;
+
+  & .form-content {
+    height: 100%;
+  }
+}
+
+#title {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 3rem;
+}
+#log-in-text {
+  margin-bottom: 1.5rem;
+
+  & a {
+    text-decoration: underline;
+    color: $black_grey;
+  }
+}
+
+#hide {
+  font-size: 18px;
+  line-height: 27px;
+  color: $grey_light;
+  padding-left: 8px;
+}
+
+#unordered-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  & li {
+    list-style: circle inside;
+    color: $black_grey;
+    font-size: 0.9rem;
+  }
 }
 
 #agreement > a {
   text-decoration: underline;
   color: $black_grey;
+  padding-bottom: 2rem;
 }
+#checkbox-container {
+  margin: 2rem 0;
+  align-items: center;
 
-#checkbox-input {
-  width: 20px;
-  margin-right: 10px;
+  & #checkbox-input {
+    width: 20px;
+    margin-right: 10px;
+  }
 }
-
 #username_error,
 #email_error {
   color: red;
   font-size: 0.75rem;
 }
-.form1-container {
-  height: 100%;
-  overflow: hidden;
-  background-color: red;
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 767px) {
+  #signUpFromId1 {
+    width: 100%;
+  }
+  #title {
+    text-align: start;
+  }
+  #log-in-text {
+    margin-bottom: 1rem;
+  }
+  button {
+    margin: 2rem 0 0.5rem;
+  }
 }
-
-// // Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) { ... }
-
-// // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) { ... }
-
-// // Large devices (desktops, 992px and up)
-// @media (min-width: 992px) { ... }
-
-// // Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) { ... }

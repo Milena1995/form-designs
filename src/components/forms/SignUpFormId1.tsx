@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
-import { useResponsive, View } from "app-studio";
+import { View } from "app-studio";
 import "../../stylesheet/form1.scss";
 import { Center, Horizontal, Vertical } from "../../layout/layout";
 import { ReactComponent as HideIcon } from "../../assets/svg/hide.svg";
-import "../../stylesheet/home.scss";
 
 export const SignUpFormId1 = () => {
   const initialValues = {
@@ -13,7 +12,6 @@ export const SignUpFormId1 = () => {
     username: "",
     checkbox: false,
   };
-  const { on } = useResponsive();
   const [hide, setHide] = useState(true);
   /**
    * inputs is an array containing HTMLElements.
@@ -86,9 +84,9 @@ export const SignUpFormId1 = () => {
   };
 
   return (
-    <Horizontal id={"signUpFromId1"} width={"100%"} height={"100%"}>
-      <Center height={"fit-content"} flex={2}>
-        <Vertical className={"form1-content"}>
+    <View id={"signUpFromId1"}>
+      <Center height={"fit-content"}>
+        <Vertical className={"form-container"}>
           <View id={"title"}>Welcome to Design Community </View>
           <View id={"log-in-text"}>
             Already have an account? <a href=" ">Log in</a>
@@ -109,7 +107,7 @@ export const SignUpFormId1 = () => {
               handleSubmit,
               isSubmitting,
             }) => (
-              <form className={"form1-container"} onSubmit={handleSubmit}>
+              <form className={"form-content"} onSubmit={handleSubmit}>
                 {/* **********************************Email Section*************************** */}
                 <label htmlFor="email">
                   Email
@@ -161,11 +159,7 @@ export const SignUpFormId1 = () => {
                   </ul>
                 </View>
                 {/* **********************************checkbox Section*************************** */}
-                <Horizontal
-                  id={"checkbox-container"}
-                  alignItems={"center"}
-                  margin={"32px 0"}
-                >
+                <Horizontal id={"checkbox-container"}>
                   <input
                     type="checkbox"
                     id="checkbox-input"
@@ -174,13 +168,13 @@ export const SignUpFormId1 = () => {
                     onBlur={handleBlur}
                     value="checkbox"
                   />
-                  <View id={"checkbox1"} htmlFor="checkbox">
+                  <View id={"checkbox-text"} htmlFor="checkbox">
                     I want to receive emails about the product, feature updates,
                     events, and marketing promotions.
                   </View>
                 </Horizontal>
                 {/* **********************************agreement Section*************************** */}
-                <View id={"agreement"} paddingBottom={32}>
+                <View id={"agreement"}>
                   By creating an account, you agree to the{" "}
                   <a href=" ">Terms of use</a> and{" "}
                   <a href=" ">Privacy Policy</a>.
@@ -197,7 +191,7 @@ export const SignUpFormId1 = () => {
                 >
                   Create an account
                 </button>
-                <View id={"log-in-text"} alignSelf={"center"} marginTop={8}>
+                <View id={"log-in-text"} alignSelf={"center"}>
                   Already have an account? <a href=" ">Log in</a>
                 </View>
               </form>
@@ -205,9 +199,6 @@ export const SignUpFormId1 = () => {
           </Formik>
         </Vertical>
       </Center>
-      {!on("mobile") && (
-        <View className={"right-section"} flex={1} height={"100%"} />
-      )}
-    </Horizontal>
+    </View>
   );
 };
