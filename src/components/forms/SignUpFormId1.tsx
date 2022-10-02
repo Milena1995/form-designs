@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
-import { View } from "app-studio";
+import { useResponsive, View } from "app-studio";
 import "../../stylesheet/form1.scss";
 import { Center, Horizontal, Vertical } from "../../layout/layout";
 import { ReactComponent as HideIcon } from "../../assets/svg/hide.svg";
+import "../../stylesheet/home.scss";
 
 export const SignUpFormId1 = () => {
   const initialValues = {
@@ -12,7 +13,7 @@ export const SignUpFormId1 = () => {
     username: "",
     checkbox: false,
   };
-
+  const { on } = useResponsive();
   const [hide, setHide] = useState(true);
   /**
    * inputs is an array containing HTMLElements.
@@ -55,9 +56,9 @@ export const SignUpFormId1 = () => {
     }
     return error;
   };
-  const handleOnSubmit = (values: any, setSubmitting: any) => {
+  const handleOnSubmit = (values: any, { setSubmitting }: any) => {
+    setSubmitting(false);
     setTimeout(() => {
-      setSubmitting(false);
       alert(JSON.stringify(values, null, 2));
     }, 400);
   };
@@ -85,8 +86,8 @@ export const SignUpFormId1 = () => {
   };
 
   return (
-    <Horizontal width={"100%"} height={"100vh"} overflowY={"auto"}>
-      <Center height={"100%"} flex={2}>
+    <Horizontal id={"signUpFromId1"} width={"100%"} height={"100%"}>
+      <Center height={"fit-content"} flex={2}>
         <Vertical className={"form1-content"}>
           <View id={"title"}>Welcome to Design Community </View>
           <View id={"log-in-text"}>
@@ -193,7 +194,6 @@ export const SignUpFormId1 = () => {
                       ? "rgba(102, 102, 102, 0.8)"
                       : "#333333",
                   }}
-                  onClick={() => console.log("clicked")}
                 >
                   Create an account
                 </button>
@@ -205,7 +205,9 @@ export const SignUpFormId1 = () => {
           </Formik>
         </Vertical>
       </Center>
-      <View className={"right-section"} flex={1} />
+      {!on("mobile") && (
+        <View className={"right-section"} flex={1} height={"100%"} />
+      )}
     </Horizontal>
   );
 };

@@ -6,8 +6,9 @@ $grey_light: rgba(102, 102, 102, 0.8);
   font-family: "Poppins";
   color: $black_grey;
 }
+
 .form1-content {
-  padding: 24px;
+  padding: 2rem 2rem 0;
 }
 
 .right-section {
@@ -23,17 +24,17 @@ $grey_light: rgba(102, 102, 102, 0.8);
 #title {
   font-style: normal;
   font-weight: 500;
-  font-size: 32px;
-  line-height: 48px;
+  font-size: 2rem;
+  line-height: 3rem;
   color: $black_grey;
 }
 #log-in-text {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: $black_grey;
-  margin-bottom: 34px;
+  margin-bottom: 2.125rem;
 
   & a {
     text-decoration: underline;
@@ -48,14 +49,14 @@ form {
 label {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: $grey;
 }
 
 input {
   border: 1px solid rgba(102, 102, 102, 0.35);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   height: 56px;
   padding-left: 5px;
   margin-bottom: 2em;
@@ -91,14 +92,14 @@ input[type="checkbox"] {
 #checkbox1 {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: $black_grey;
 }
 
 button {
   background-color: $black_grey;
-  border-radius: 32px;
+  border-radius: 2rem;
   font-style: normal;
   font-weight: 500;
   font-size: 22px;
@@ -124,5 +125,22 @@ button {
 #username_error,
 #email_error {
   color: red;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
+.form1-container {
+  height: 100%;
+  overflow: hidden;
+  background-color: red;
+}
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) { ... }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) { ... }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) { ... }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { ... }
