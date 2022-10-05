@@ -5,7 +5,7 @@ import "../../stylesheet/SignUpFormId1.scss";
 import { Center, Horizontal, Vertical } from "../../layout/layout";
 import { ReactComponent as HideIcon } from "../../assets/svg/hide.svg";
 
-export const SignUpFormId1 = () => {
+export const SignUpFormId2 = () => {
   const initialValues = {
     email: "",
     password: "",
@@ -180,7 +180,7 @@ export const SignUpFormId1 = () => {
                   <a href=" ">Privacy Policy</a>.
                 </View>
                 {/* **********************************Submit Section*************************** */}
-                <button
+                {/* <button
                   type="submit"
                   disabled={isSubmitting}
                   style={{
@@ -190,7 +190,7 @@ export const SignUpFormId1 = () => {
                   }}
                 >
                   Create an account
-                </button>
+                </button> */}
                 <View id={"log-in-text"} alignSelf={"center"}>
                   Already have an account? <a href=" ">Log in</a>
                 </View>

@@ -5,12 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ResponsiveProvider, ThemeProvider } from "app-studio";
 import { theme } from "./style/colorConfig";
+// import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    {/* <BrowserRouter basename="/form/id"> */}
     <ResponsiveProvider
       breakpoints={{
         xs: 0,
@@ -29,6 +31,7 @@ root.render(
         <App />
       </ThemeProvider>
     </ResponsiveProvider>
+    {/* </BrowserRouter> */}
   </React.StrictMode>
 );
 
