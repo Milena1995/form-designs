@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import { View } from "app-studio";
 import "../../stylesheet/SignUpFormId2.scss";
-import { Vertical } from "../../layout/layout";
+import { Center, Vertical } from "../../layout/layout";
 import { SlideArrow } from "../SlideArrows";
 import { listOfForm } from "../../pages/home";
 import { EmailInput } from "../inputs/EmailInput";
 import { UserNameInput } from "../inputs/UserNameInput";
 import { PasswordInput } from "../inputs/PasswordInput";
 import { CheckBoxInput } from "../inputs/CheckBox";
+import ReCAPTCHA from "react-google-recaptcha";
+import { GOOGLE_RECAPCHA_SITE_KEY } from "../../configs/AppConfigs";
+import bcrypt from "bcryptjs";
 
 export const SignUpFormId2 = () => {
   const initialValues = {
@@ -16,8 +19,10 @@ export const SignUpFormId2 = () => {
     password: "",
     username: "",
     checkbox: false,
+    recapcha: false,
   };
   const [hide, setHide] = useState(true);
+  const [isRobot, setIsRobot] = useState(true);
   /**
    * inputs is an array containing HTMLElements.
    * input[index] is an HTMLElement(input tag) having attribute name
@@ -47,11 +52,12 @@ export const SignUpFormId2 = () => {
       { id: "one-character", regex: !/\d/.test(value) },
     ];
     for (var i = 0; i < errorTypes.length; i++) {
-      const name = document.getElementById(errorTypes[i].id);
+      const name = document.getElementById("errorMessageForm2");
       if (name) {
         if (errorTypes[i].regex) {
           name.style.color = "red";
           error = true;
+          break;
         } else {
           name.style.color = "#333333";
         }
@@ -61,13 +67,17 @@ export const SignUpFormId2 = () => {
   };
   const handleOnSubmit = (values: any, { setSubmitting }: any) => {
     setSubmitting(false);
+    values.password = bcrypt.hashSync(
+      values.password,
+      "$2a$10$CwTycUXWue0Thq9StjUM0u"
+    );
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
     }, 400);
   };
 
   const handleValidation = (values: any) => {
-    const errors = { email: "", password: "", username: "" };
+    const errors = { email: "", password: "", username: "", recapcha: "" };
 
     if (!values.email) {
       errors.email = "Required";
@@ -76,6 +86,8 @@ export const SignUpFormId2 = () => {
     }
 
     errors.password = handlePassword(values.password);
+
+    if (isRobot) errors.recapcha = "Please verify that you are not a bot.";
 
     if (!values.username) {
       errors.username = "Username is required";
@@ -87,13 +99,12 @@ export const SignUpFormId2 = () => {
     //  */
     if (new Set(Object.values(errors)).size !== 1) return errors;
   };
-
   return (
     <Vertical id={"signUpFromId1"}>
       <SlideArrow listForm={listOfForm} />
       <Vertical className={"form-container"}>
-        <View id={"title"}>Welcome to Design Community </View>
-        <View id={"log-in-text"}>
+        <View id={"title"}>Create an account</View>
+        <View className={"log-in-text"}>
           Already have an account? <a href=" ">Log in</a>
         </View>
         <Formik
@@ -141,6 +152,18 @@ export const SignUpFormId2 = () => {
                 <a href=" ">Terms of use</a> and <a href=" ">Privacy Policy</a>.
               </View>
               {/* **********************************Submit Section*************************** */}
+              <Center marginTop={"1.5rem"} flexDirection={"column"}>
+                <ReCAPTCHA
+                  sitekey={GOOGLE_RECAPCHA_SITE_KEY}
+                  onChange={() => setIsRobot(!isRobot)}
+                  onErrored={() => alert("error")}
+                />
+                {isRobot && errors.recapcha && (
+                  <View color={"red"}>{errors.recapcha} </View>
+                )}
+              </Center>
+
+              {/* **********************************Submit Section*************************** */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -153,9 +176,9 @@ export const SignUpFormId2 = () => {
                 Create an account
               </button>
               {/* ********************************************************************* */}
-              <View id={"log-in-text"}>
+              <Center className={"log-in-text"}>
                 Already have an account? <a href=" ">Log in</a>
-              </View>
+              </Center>
             </form>
           )}
         </Formik>

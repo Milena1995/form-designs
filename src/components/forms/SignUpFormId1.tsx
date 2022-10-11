@@ -93,7 +93,7 @@ export const SignUpFormId1 = () => {
       <SlideArrow listForm={listOfForm} />
       <Vertical className={"form-container"}>
         <View id={"title"}>Welcome to Design Community </View>
-        <View id={"log-in-text"}>
+        <View className={"log-in-text"}>
           Already have an account? <a href=" ">Log in</a>
         </View>
         <Formik
@@ -153,7 +153,7 @@ export const SignUpFormId1 = () => {
                 Create an account
               </button>
               {/* ********************************************************************* */}
-              <View id={"log-in-text"}>
+              <View className={"log-in-text"}>
                 Already have an account? <a href=" ">Log in</a>
               </View>
             </form>

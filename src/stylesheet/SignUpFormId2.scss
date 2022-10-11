@@ -45,27 +45,29 @@ button {
   width: fit-content;
   align-self: center;
   border: 0px;
-  margin: 2.5rem 0 0.5rem;
+  margin: 1rem 0 0.5rem;
 }
 
 #signUpFromId1 {
+  align-items: flex-end;
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  background: rgb(215, 92, 204);
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 1) 70%,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 37%,
-    rgba(0, 212, 255, 1) 100%
+    rgba(215, 92, 204, 1) 2%,
+    rgba(67, 92, 213, 1) 28%,
+    rgba(92, 184, 215, 1) 43%,
+    rgba(252, 251, 254, 0.3342379188003326) 43%
   );
 }
 
 .form-container {
-  padding: 2rem 2rem 0;
+  padding: 0 2rem 0;
   justify-content: center;
   align-items: center;
   height: fit-content;
-  width: 70%;
+  width: 57%;
 
   & .form-content {
     height: 100%;
@@ -77,9 +79,8 @@ button {
   font-size: 2rem;
   line-height: 3rem;
 }
-#log-in-text {
-  margin-bottom: 1.5rem;
-  align-self: "center";
+.log-in-text {
+  margin-bottom: 1rem;
 
   & a {
     text-decoration: underline;
@@ -110,10 +111,10 @@ button {
 #agreement > a {
   text-decoration: underline;
   color: $black_grey;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 #checkbox-container {
-  margin: 2rem 0;
+  margin: 1rem 0;
   align-items: center;
 
   & #checkbox-input {
@@ -126,7 +127,13 @@ button {
   color: red;
   font-size: 0.75rem;
 }
+.rc-anchor-light.rc-anchor-normal {
+  border-radius: 8px;
+}
 
+.rc-anchor-light {
+  color: #333333;
+}
 // Medium devices (tablets, 768px and up)
 @media (max-width: 767px) {
   #signUpFromId1 {
@@ -140,10 +147,10 @@ button {
   #title {
     text-align: start;
   }
-  #log-in-text {
+  .log-in-text {
     margin-bottom: 1rem;
   }
   button {
-    margin: 2rem 0 0.5rem;
+    margin: 1rem 0 0.5rem;
   }
 }

@@ -33,14 +33,8 @@ export function PasswordInput({
         onBlur={handleBlur}
         value={values.password}
       />
-      <View>
-        <ul id={"unordered-list"}>
-          <li id={"more-characters"}>Use 8 or more characters</li>
-          <li id={"uppercase"}>One Uppercase character</li>
-          <li id={"lowercase"}>One lowercase character</li>
-          <li id={"special-characters"}>One special character</li>
-          <li id={"one-character"}>One number</li>
-        </ul>
+      <View id={"errorMessageForm2"}>
+        Use 8 or more characters with a mix of letters, numbers and symbols.
       </View>
     </>
   );
