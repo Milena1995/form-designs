@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import { View } from "app-studio";
-import "../../stylesheet/SignUpFormId1.scss";
-import { Center, Horizontal, Vertical } from "../../layout/layout";
-import { ReactComponent as HideIcon } from "../../assets/svg/hide.svg";
+import "../../stylesheet/SignUpFormId2.scss";
+import { Vertical } from "../../layout/layout";
+import { SlideArrow } from "../SlideArrows";
+import { listOfForm } from "../../pages/home";
+import { EmailInput } from "../inputs/EmailInput";
+import { UserNameInput } from "../inputs/UserNameInput";
+import { PasswordInput } from "../inputs/PasswordInput";
+import { CheckBoxInput } from "../inputs/CheckBox";
 
 export const SignUpFormId2 = () => {
   const initialValues = {
@@ -84,121 +89,77 @@ export const SignUpFormId2 = () => {
   };
 
   return (
-    <View id={"signUpFromId1"}>
-      <Center height={"fit-content"}>
-        <Vertical className={"form-container"}>
-          <View id={"title"}>Welcome to Design Community </View>
-          <View id={"log-in-text"}>
-            Already have an account? <a href=" ">Log in</a>
-          </View>
-          <Formik
-            initialValues={initialValues}
-            validate={handleValidation}
-            validateOnChange={false}
-            validateOnBlur={false}
-            onSubmit={handleOnSubmit}
-          >
-            {/* handleBlur: used to identify if an input has been touched */}
-            {({
-              values,
-              errors,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting,
-            }) => (
-              <form className={"form-content"} onSubmit={handleSubmit}>
-                {/* **********************************Email Section*************************** */}
-                <label htmlFor="email">
-                  Email
-                  {errors.email && <span id={"email_error"}>* required</span>}
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-                {/* **********************************UserName Section*************************** */}
-                <label htmlFor="username">
-                  Username
-                  {errors.username && (
-                    <span id={"username_error"}>* required</span>
-                  )}
-                </label>
-                <input
-                  type="username"
-                  name="username"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.username}
-                />
-                {/* **********************************Password Section*************************** */}
-                <Horizontal justifyContent={"space-between"}>
-                  <label htmlFor="password">Password</label>
-                  <Horizontal justifyContent={"center"} alignItems={"center"}>
-                    <HideIcon onClick={() => setHide(!hide)} />
-                    <View id={"hide"}>{hide ? "Show" : "Hide"}</View>
-                  </Horizontal>
-                </Horizontal>
-                <input
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                />
-                <View>
-                  <ul id={"unordered-list"}>
-                    <li id={"more-characters"}>Use 8 or more characters</li>
-                    <li id={"uppercase"}>One Uppercase character</li>
-                    <li id={"lowercase"}>One lowercase character</li>
-                    <li id={"special-characters"}>One special character</li>
-                    <li id={"one-character"}>One number</li>
-                  </ul>
-                </View>
-                {/* **********************************checkbox Section*************************** */}
-                <Horizontal id={"checkbox-container"}>
-                  <input
-                    type="checkbox"
-                    id="checkbox-input"
-                    name="checkbox"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value="checkbox"
-                  />
-                  <View id={"checkbox-text"} htmlFor="checkbox">
-                    I want to receive emails about the product, feature updates,
-                    events, and marketing promotions.
-                  </View>
-                </Horizontal>
-                {/* **********************************agreement Section*************************** */}
-                <View id={"agreement"}>
-                  By creating an account, you agree to the{" "}
-                  <a href=" ">Terms of use</a> and{" "}
-                  <a href=" ">Privacy Policy</a>.
-                </View>
-                {/* **********************************Submit Section*************************** */}
-                {/* <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  style={{
-                    backgroundColor: isSubmitting
-                      ? "rgba(102, 102, 102, 0.8)"
-                      : "#333333",
-                  }}
-                >
-                  Create an account
-                </button> */}
-                <View id={"log-in-text"} alignSelf={"center"}>
-                  Already have an account? <a href=" ">Log in</a>
-                </View>
-              </form>
-            )}
-          </Formik>
-        </Vertical>
-      </Center>
-    </View>
+    <Vertical id={"signUpFromId1"}>
+      <SlideArrow listForm={listOfForm} />
+      <Vertical className={"form-container"}>
+        <View id={"title"}>Welcome to Design Community </View>
+        <View id={"log-in-text"}>
+          Already have an account? <a href=" ">Log in</a>
+        </View>
+        <Formik
+          initialValues={initialValues}
+          validate={handleValidation}
+          validateOnChange={false}
+          validateOnBlur={false}
+          onSubmit={handleOnSubmit}
+        >
+          {/* handleBlur: used to identify if an input has been touched */}
+          {({
+            values,
+            errors,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
+            <form className={"form-content"} onSubmit={handleSubmit}>
+              <EmailInput
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                values={values}
+                errors={errors}
+              />
+              <UserNameInput
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                values={values}
+                errors={errors}
+              />
+              <PasswordInput
+                callback={() => setHide(!hide)}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                values={values}
+              />
+              <CheckBoxInput
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+              {/* **********************************agreement Section*************************** */}
+              <View id={"agreement"}>
+                By creating an account, you agree to the{" "}
+                <a href=" ">Terms of use</a> and <a href=" ">Privacy Policy</a>.
+              </View>
+              {/* **********************************Submit Section*************************** */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                style={{
+                  backgroundColor: isSubmitting
+                    ? "rgba(102, 102, 102, 0.8)"
+                    : "#333333",
+                }}
+              >
+                Create an account
+              </button>
+              {/* ********************************************************************* */}
+              <View id={"log-in-text"}>
+                Already have an account? <a href=" ">Log in</a>
+              </View>
+            </form>
+          )}
+        </Formik>
+      </Vertical>
+    </Vertical>
   );
 };

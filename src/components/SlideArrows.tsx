@@ -3,20 +3,20 @@ import { ReactComponent as BackArrow } from "../../src/assets/svg/backArrow.svg"
 import { ReactComponent as NextArrow } from "../../src/assets/svg/forwardArrow.svg";
 import { Horizontal } from "../layout/layout";
 import "../../src/stylesheet/slideArrow.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const SlideArrow = ({
-  callback,
   listForm,
   ...props
 }: {
-  callback?: Function;
   listForm: Array<any>;
 }) => {
   const { on } = useResponsive();
   const [value, setValue] = useState(0);
 
-  if (callback) callback(value);
+  useEffect(() => {
+    localStorage.setItem("@index", `${value}`);
+  }, [value]);
 
   return (
     <Horizontal
