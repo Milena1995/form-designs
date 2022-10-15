@@ -11,8 +11,7 @@ import { PasswordInput } from "../inputs/PasswordInput";
 import { CheckBoxInput } from "../inputs/CheckBox";
 import ReCAPTCHA from "react-google-recaptcha";
 import { GOOGLE_RECAPCHA_SITE_KEY } from "../../configs/AppConfigs";
-import bcrypt from "bcryptjs";
-
+// const bcrypt = require("bcrypt");
 export const SignUpFormId2 = () => {
   const initialValues = {
     email: "",
@@ -67,10 +66,8 @@ export const SignUpFormId2 = () => {
   };
   const handleOnSubmit = (values: any, { setSubmitting }: any) => {
     setSubmitting(false);
-    values.password = bcrypt.hashSync(
-      values.password,
-      "$2a$10$CwTycUXWue0Thq9StjUM0u"
-    );
+    // const salt = bcrypt.genSaltSync(10);
+    // values.password = bcrypt.hashSync(values.password, salt);
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
     }, 400);

@@ -15,6 +15,7 @@ export const SlideArrow = ({
   const [value, setValue] = useState(0);
 
   useEffect(() => {
+    console.log({ value });
     localStorage.setItem("@index", `${value}`);
   }, [value]);
 

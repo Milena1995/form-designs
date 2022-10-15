@@ -5,6 +5,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ResponsiveProvider, ThemeProvider } from "app-studio";
 import { theme } from "./style/colorConfig";
+import { Provider } from "react-redux";
+import store from "./store/store";
+
 // import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -13,24 +16,26 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     {/* <BrowserRouter basename="/form/id"> */}
-    <ResponsiveProvider
-      breakpoints={{
-        xs: 0,
-        sm: 340,
-        md: 560,
-        lg: 1080,
-        xl: 1300,
-      }}
-      devices={{
-        mobile: ["xs", "sm"],
-        tablet: ["md", "lg"],
-        desktop: ["lg", "xl"],
-      }}
-    >
-      <ThemeProvider {...theme}>
-        <App />
-      </ThemeProvider>
-    </ResponsiveProvider>
+    <Provider store={store}>
+      <ResponsiveProvider
+        breakpoints={{
+          xs: 0,
+          sm: 340,
+          md: 560,
+          lg: 1080,
+          xl: 1300,
+        }}
+        devices={{
+          mobile: ["xs", "sm"],
+          tablet: ["md", "lg"],
+          desktop: ["lg", "xl"],
+        }}
+      >
+        <ThemeProvider {...theme}>
+          <App />
+        </ThemeProvider>
+      </ResponsiveProvider>
+    </Provider>
     {/* </BrowserRouter> */}
   </React.StrictMode>
 );
