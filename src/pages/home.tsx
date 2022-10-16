@@ -1,24 +1,24 @@
 // import { View } from "app-studio";
-import React from "react";
-import "../stylesheet/home.scss";
-import { useMount, View } from "app-studio";
+import React, { useEffect } from "react";
+import style from "../stylesheet/home.module.scss";
+import { View } from "app-studio";
 import { SignUpFormId1 } from "../components/forms/SignUpFormId1";
-import "../../src/stylesheet/home.scss";
 import { SignUpFormId2 } from "../components/forms/SignUpFormId2";
+import { useSelector } from "react-redux";
+import { SignUpFormId3 } from "../components/forms/SignUpFormId3";
 
 export const listOfForm = [
   <SignUpFormId1 />,
   <SignUpFormId2 />,
-  <SignUpFormId1 />,
+  <SignUpFormId3 />,
 ];
 const HomePage = () => {
-  useMount(() => {
-    localStorage.setItem("@index", "0");
-  });
+  const currentIndex = useSelector((state: any) => state.slide.value);
 
-  const currentIndex = Number(localStorage.getItem("@index"));
+  useEffect(() => {}, [currentIndex]);
+
   return (
-    <View id={"container"} overflowY={"auto"}>
+    <View id={style.container}>
       {listOfForm[currentIndex] ? (
         listOfForm[currentIndex]
       ) : (

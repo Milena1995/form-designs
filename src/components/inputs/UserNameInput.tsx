@@ -1,4 +1,6 @@
 import React from "react";
+import styleForm from "../../stylesheet/SignUpFormId1.module.scss";
+
 export function UserNameInput({
   handleChange,
   handleBlur,
@@ -15,7 +17,9 @@ export function UserNameInput({
       {" "}
       <label htmlFor="username">
         Username
-        {errors.username && <span id={"username_error"}>* required</span>}
+        {errors.username && (
+          <span id={styleForm.username_error}>* required</span>
+        )}
       </label>
       <input
         type="username"

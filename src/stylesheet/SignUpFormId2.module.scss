@@ -51,7 +51,7 @@ button {
 #signUpFromId1 {
   align-items: flex-end;
   width: 100%;
-  height: fit-content;
+  height: 100vh;
   background: rgb(215, 92, 204);
   background: linear-gradient(
     90deg,
@@ -62,14 +62,14 @@ button {
   );
 }
 
-.form-container {
+.form_container {
   padding: 0 2rem 0;
   justify-content: center;
   align-items: center;
   height: fit-content;
   width: 57%;
 
-  & .form-content {
+  & .form_content {
     height: 100%;
   }
 }
@@ -79,7 +79,7 @@ button {
   font-size: 2rem;
   line-height: 3rem;
 }
-.log-in-text {
+.log_in_text {
   margin-bottom: 1rem;
 
   & a {
@@ -95,7 +95,7 @@ button {
   padding-left: 8px;
 }
 
-#unordered-list {
+#unordered_list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -113,11 +113,11 @@ button {
   color: $black_grey;
   padding-bottom: 1rem;
 }
-#checkbox-container {
+#checkbox_container {
   margin: 1rem 0;
   align-items: center;
 
-  & #checkbox-input {
+  & #checkbox_input {
     width: 20px;
     margin-right: 10px;
   }
@@ -140,14 +140,14 @@ button {
     background: white;
   }
 
-  .form-container {
+  .form_container {
     width: 100%;
   }
 
   #title {
     text-align: start;
   }
-  .log-in-text {
+  .log_in_text {
     margin-bottom: 1rem;
   }
   button {

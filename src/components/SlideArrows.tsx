@@ -2,8 +2,10 @@ import { useResponsive, View } from "app-studio";
 import { ReactComponent as BackArrow } from "../../src/assets/svg/backArrow.svg";
 import { ReactComponent as NextArrow } from "../../src/assets/svg/forwardArrow.svg";
 import { Horizontal } from "../layout/layout";
-import "../../src/stylesheet/slideArrow.scss";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "../models/SlideModel";
+
+import style from "../../src/stylesheet/slideArrow.module.scss";
 
 export const SlideArrow = ({
   listForm,
@@ -12,21 +14,21 @@ export const SlideArrow = ({
   listForm: Array<any>;
 }) => {
   const { on } = useResponsive();
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    console.log({ value });
-    localStorage.setItem("@index", `${value}`);
-  }, [value]);
+  const value = useSelector((state: any) => state.slide.value);
+  const dispatch = useDispatch();
 
   return (
     <Horizontal
-      className={"slideArrow-top"}
+      className={style.slideArrow_top}
       justifyContent={value === 0 ? "flex-end" : "space-between"}
       {...props}
     >
       {value > 0 && (
-        <BackArrow width={24} height={24} onClick={() => setValue(value - 1)} />
+        <BackArrow
+          width={24}
+          height={24}
+          onClick={() => dispatch(decrement())}
+        />
       )}
       {value > 0 && value < listForm.length - 1 && !on("mobile") && (
         <View fontSize={18}>
@@ -34,7 +36,11 @@ export const SlideArrow = ({
         </View>
       )}
       {value < listForm.length - 1 && (
-        <NextArrow width={24} height={24} onClick={() => setValue(value + 1)} />
+        <NextArrow
+          width={24}
+          height={24}
+          onClick={() => dispatch(increment())}
+        />
       )}
     </Horizontal>
   );

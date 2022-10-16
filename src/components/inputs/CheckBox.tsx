@@ -2,6 +2,8 @@ import { View } from "app-studio";
 import React from "react";
 import { Horizontal } from "../../layout/layout";
 
+import styleForm from "../../stylesheet/SignUpFormId1.module.scss";
+
 export function CheckBoxInput({
   handleChange,
   handleBlur,
@@ -10,16 +12,16 @@ export function CheckBoxInput({
   handleBlur?: any;
 }) {
   return (
-    <Horizontal id={"checkbox-container"}>
+    <Horizontal className={styleForm.checkbox_container}>
       <input
         type="checkbox"
-        id="checkbox-input"
+        className={styleForm.checkbox_input}
         name="checkbox"
         onChange={handleChange}
         onBlur={handleBlur}
         value="checkbox"
       />
-      <View id={"checkbox-text"} htmlFor="checkbox">
+      <View className={styleForm.checkbox_text} htmlFor="checkbox">
         I want to receive emails about the product, feature updates, events, and
         marketing promotions.
       </View>

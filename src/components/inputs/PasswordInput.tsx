@@ -2,6 +2,7 @@ import { View } from "app-studio";
 import React from "react";
 import { Horizontal } from "../../layout/layout";
 import { ReactComponent as HideIcon } from "../../assets/svg/hide.svg";
+import styleForm from "../../stylesheet/SignUpFormId1.module.scss";
 
 export function PasswordInput({
   handleChange,
@@ -33,7 +34,7 @@ export function PasswordInput({
         onBlur={handleBlur}
         value={values.password}
       />
-      <View id={"errorMessageForm2"}>
+      <View id={styleForm.errorMessageForm2}>
         Use 8 or more characters with a mix of letters, numbers and symbols.
       </View>
     </>

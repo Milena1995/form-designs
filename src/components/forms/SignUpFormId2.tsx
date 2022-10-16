@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import { View } from "app-studio";
-import "../../stylesheet/SignUpFormId2.scss";
 import { Center, Vertical } from "../../layout/layout";
 import { SlideArrow } from "../SlideArrows";
 import { listOfForm } from "../../pages/home";
@@ -12,6 +11,9 @@ import { CheckBoxInput } from "../inputs/CheckBox";
 import ReCAPTCHA from "react-google-recaptcha";
 import { GOOGLE_RECAPCHA_SITE_KEY } from "../../configs/AppConfigs";
 // const bcrypt = require("bcrypt");
+
+import styleForm2 from "../../stylesheet/SignUpFormId2.module.scss";
+
 export const SignUpFormId2 = () => {
   const initialValues = {
     email: "",
@@ -28,6 +30,8 @@ export const SignUpFormId2 = () => {
    * function will be executed when the variable hide is changed.
    */
   useEffect(() => {
+    console.log("Enter signUpFromId2");
+
     var inputs = document.getElementsByTagName("input");
     for (var index = 0; index < inputs.length; ++index) {
       if (inputs[index].name === "password") {
@@ -97,11 +101,11 @@ export const SignUpFormId2 = () => {
     if (new Set(Object.values(errors)).size !== 1) return errors;
   };
   return (
-    <Vertical id={"signUpFromId1"}>
+    <Vertical id={styleForm2.signUpFromId1}>
       <SlideArrow listForm={listOfForm} />
-      <Vertical className={"form-container"}>
-        <View id={"title"}>Create an account</View>
-        <View className={"log-in-text"}>
+      <Vertical className={styleForm2.form_container}>
+        <View id={styleForm2.title}>Create an account</View>
+        <View className={styleForm2.log_in_text}>
           Already have an account? <a href=" ">Log in</a>
         </View>
         <Formik
@@ -120,7 +124,7 @@ export const SignUpFormId2 = () => {
             handleSubmit,
             isSubmitting,
           }) => (
-            <form className={"form-content"} onSubmit={handleSubmit}>
+            <form className={styleForm2.form_content} onSubmit={handleSubmit}>
               <EmailInput
                 handleChange={handleChange}
                 handleBlur={handleBlur}
@@ -144,7 +148,7 @@ export const SignUpFormId2 = () => {
                 handleBlur={handleBlur}
               />
               {/* **********************************agreement Section*************************** */}
-              <View id={"agreement"}>
+              <View id={styleForm2.agreement}>
                 By creating an account, you agree to the{" "}
                 <a href=" ">Terms of use</a> and <a href=" ">Privacy Policy</a>.
               </View>
@@ -173,7 +177,7 @@ export const SignUpFormId2 = () => {
                 Create an account
               </button>
               {/* ********************************************************************* */}
-              <Center className={"log-in-text"}>
+              <Center className={styleForm2.log_in_text}>
                 Already have an account? <a href=" ">Log in</a>
               </Center>
             </form>

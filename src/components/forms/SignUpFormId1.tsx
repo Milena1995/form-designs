@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import { View } from "app-studio";
-import "../../stylesheet/SignUpFormId1.scss";
 import { Vertical } from "../../layout/layout";
 import { SlideArrow } from "../SlideArrows";
 import { listOfForm } from "../../pages/home";
@@ -9,6 +8,8 @@ import { EmailInput } from "../inputs/EmailInput";
 import { UserNameInput } from "../inputs/UserNameInput";
 import { PasswordInput } from "../inputs/PasswordInput";
 import { CheckBoxInput } from "../inputs/CheckBox";
+
+import styleForm1 from "../../stylesheet/SignUpFormId1.module.scss";
 
 export const SignUpFormId1 = () => {
   const initialValues = {
@@ -24,6 +25,7 @@ export const SignUpFormId1 = () => {
    * function will be executed when the variable hide is changed.
    */
   useEffect(() => {
+    console.log("Enter signUpFromId1");
     var inputs = document.getElementsByTagName("input");
     for (var index = 0; index < inputs.length; ++index) {
       if (inputs[index].name === "password") {
@@ -89,11 +91,11 @@ export const SignUpFormId1 = () => {
   };
 
   return (
-    <Vertical id={"signUpFromId1"}>
+    <Vertical className={styleForm1.signUpFromId1}>
       <SlideArrow listForm={listOfForm} />
-      <Vertical className={"form-container"}>
-        <View id={"title"}>Welcome to Design Community </View>
-        <View className={"log-in-text"}>
+      <Vertical className={styleForm1.form_container}>
+        <View className={styleForm1.title}>Welcome to Design Community </View>
+        <View className={styleForm1.log_in_text}>
           Already have an account? <a href=" ">Log in</a>
         </View>
         <Formik
@@ -112,7 +114,7 @@ export const SignUpFormId1 = () => {
             handleSubmit,
             isSubmitting,
           }) => (
-            <form className={"form-content"} onSubmit={handleSubmit}>
+            <form className={styleForm1.form_content} onSubmit={handleSubmit}>
               <EmailInput
                 handleChange={handleChange}
                 handleBlur={handleBlur}
@@ -136,7 +138,7 @@ export const SignUpFormId1 = () => {
                 handleBlur={handleBlur}
               />
               {/* **********************************agreement Section*************************** */}
-              <View id={"agreement"}>
+              <View className={styleForm1.agreement}>
                 By creating an account, you agree to the{" "}
                 <a href=" ">Terms of use</a> and <a href=" ">Privacy Policy</a>.
               </View>
@@ -153,7 +155,7 @@ export const SignUpFormId1 = () => {
                 Create an account
               </button>
               {/* ********************************************************************* */}
-              <View className={"log-in-text"}>
+              <View className={styleForm1.log_in_text}>
                 Already have an account? <a href=" ">Log in</a>
               </View>
             </form>

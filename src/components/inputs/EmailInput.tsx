@@ -1,5 +1,5 @@
 import React from "react";
-
+import styleForm from "../../stylesheet/SignUpFormId1.module.scss";
 export function EmailInput({
   handleChange,
   handleBlur,
@@ -16,7 +16,7 @@ export function EmailInput({
       {" "}
       <label htmlFor="email">
         Email
-        {errors.email && <span id={"email_error"}>* required</span>}
+        {errors.email && <span id={styleForm.email_error}>* required</span>}
       </label>
       <input
         type="email"

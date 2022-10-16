@@ -48,9 +48,9 @@ button {
   margin: 2.5rem 0 0.5rem;
 }
 
-#signUpFromId1 {
+.signUpFromId1 {
   width: 100%;
-  height: fit-content;
+  height: 100vh;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 1) 70%,
@@ -60,24 +60,24 @@ button {
   );
 }
 
-.form-container {
+.form_container {
   padding: 2rem 2rem 0;
   justify-content: center;
   align-items: center;
   height: fit-content;
   width: 70%;
 
-  & .form-content {
+  & .form_content {
     height: 100%;
   }
 }
 
-#title {
+.title {
   font-weight: 500;
   font-size: 2rem;
   line-height: 3rem;
 }
-.log-in-text {
+.log_in_text {
   margin-bottom: 1.5rem;
   align-self: "center";
 
@@ -87,14 +87,14 @@ button {
   }
 }
 
-#hide {
+.hide {
   font-size: 18px;
   line-height: 27px;
   color: $grey_light;
   padding-left: 8px;
 }
 
-#unordered-list {
+.unordered_list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -107,40 +107,40 @@ button {
   }
 }
 
-#agreement > a {
+.agreement > a {
   text-decoration: underline;
   color: $black_grey;
   padding-bottom: 2rem;
 }
-#checkbox-container {
+.checkbox_container {
   margin: 2rem 0;
   align-items: center;
 
-  & #checkbox-input {
+  & .checkbox_input {
     width: 20px;
     margin-right: 10px;
   }
 }
-#username_error,
-#email_error {
+.username_error,
+.email_error {
   color: red;
   font-size: 0.75rem;
 }
 
 // Medium devices (tablets, 768px and up)
 @media (max-width: 767px) {
-  #signUpFromId1 {
+  .signUpFromId1 {
     background: white;
   }
 
-  .form-container {
+  .form_container {
     width: 100%;
   }
 
-  #title {
+  .title {
     text-align: start;
   }
-  .log-in-text {
+  .log_in_text {
     margin-bottom: 1rem;
   }
   button {
