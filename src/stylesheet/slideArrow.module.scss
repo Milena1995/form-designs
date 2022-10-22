@@ -1,18 +1,17 @@
-.slideArrow {
-  width: 100%;
-  background-color: transparent;
-  opacity: 0.5;
-  bottom: 0;
-  top: 50%;
-  position: absolute;
-  z-index: 9999;
-}
+// .slideArrow {
+//   width: 100%;
+//   background-color: transparent;
+//   opacity: 0.5;
+//   bottom: 0;
+//   top: 50%;
+//   position: absolute;
+//   z-index: 9999;
+// }
 
 .slideArrow_top {
   width: 100%;
   background-color: transparent;
   opacity: 0.5;
   bottom: 0;
-  justify-content: space-between;
-  margin: 1rem 1rem 0 1rem;
+  padding: 1rem 0.5rem 0 0.5rem;
 }

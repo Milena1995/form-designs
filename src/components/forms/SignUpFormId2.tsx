@@ -100,13 +100,20 @@ export const SignUpFormId2 = () => {
     //  */
     if (new Set(Object.values(errors)).size !== 1) return errors;
   };
+  const ErrorMessage = () => {
+    return (
+      <View id={"errorMessageForm2"}>
+        Use 8 or more characters with a mix of letters, numbers and symbols.
+      </View>
+    );
+  };
   return (
     <Vertical id={styleForm2.signUpFromId1}>
       <SlideArrow listForm={listOfForm} />
       <Vertical className={styleForm2.form_container}>
         <View id={styleForm2.title}>Create an account</View>
         <View className={styleForm2.log_in_text}>
-          Already have an account? <a href=" ">Log in</a>
+          Already have an account? <a href="/login.html">Log in</a>
         </View>
         <Formik
           initialValues={initialValues}
@@ -142,6 +149,8 @@ export const SignUpFormId2 = () => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 values={values}
+                hide={hide}
+                errorMessage={ErrorMessage}
               />
               <CheckBoxInput
                 handleChange={handleChange}
@@ -160,7 +169,9 @@ export const SignUpFormId2 = () => {
                   onErrored={() => alert("error")}
                 />
                 {isRobot && errors.recapcha && (
-                  <View color={"red"}>{errors.recapcha} </View>
+                  <View color={"red"} marginTop={7}>
+                    {errors.recapcha}{" "}
+                  </View>
                 )}
               </Center>
 
@@ -178,7 +189,7 @@ export const SignUpFormId2 = () => {
               </button>
               {/* ********************************************************************* */}
               <Center className={styleForm2.log_in_text}>
-                Already have an account? <a href=" ">Log in</a>
+                Already have an account? <a href="/login.html">Log in</a>
               </Center>
             </form>
           )}

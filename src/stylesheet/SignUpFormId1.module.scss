@@ -18,6 +18,7 @@ form {
 
 label {
   color: $grey;
+  margin-bottom: 3px;
 }
 
 input {
@@ -50,7 +51,6 @@ button {
 
 .signUpFromId1 {
   width: 100%;
-  height: 100vh;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 1) 70%,
@@ -64,7 +64,6 @@ button {
   padding: 2rem 2rem 0;
   justify-content: center;
   align-items: center;
-  height: fit-content;
   width: 70%;
 
   & .form_content {
@@ -78,8 +77,8 @@ button {
   line-height: 3rem;
 }
 .log_in_text {
+  text-align: center;
   margin-bottom: 1.5rem;
-  align-self: "center";
 
   & a {
     text-decoration: underline;
@@ -98,12 +97,12 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 
   & li {
     list-style: circle inside;
-    color: $black_grey;
-    font-size: 0.9rem;
+    color: $grey_light;
+    font-size: 14px;
   }
 }
 

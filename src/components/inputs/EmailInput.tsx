@@ -16,7 +16,9 @@ export function EmailInput({
       {" "}
       <label htmlFor="email">
         Email
-        {errors.email && <span id={styleForm.email_error}>* required</span>}
+        {errors.email && (
+          <span className={styleForm.email_error}>* required</span>
+        )}
       </label>
       <input
         type="email"

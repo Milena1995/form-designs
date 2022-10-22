@@ -18,7 +18,7 @@ export function UserNameInput({
       <label htmlFor="username">
         Username
         {errors.username && (
-          <span id={styleForm.username_error}>* required</span>
+          <span className={styleForm.username_error}>* required</span>
         )}
       </label>
       <input
